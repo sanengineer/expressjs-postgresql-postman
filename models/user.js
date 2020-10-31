@@ -21,15 +21,14 @@ module.exports = (sequelize, DataTypes) => {
   //   modelName: 'User',
   // });
 
-  const User = sequelize.define(
+  const Usr = sequelize.define(
     "User",
     {
       username: DataTypes.STRING,
       password: DataTypes.STRING,
-    },
-    {}
+    }
   );
-  User.beforeSave((user, options) => {
+  Usr.beforeSave((user, options) => {
     if (user.changed("password")) {
       user.password = bcrypt.hashSync(
         user.password,
@@ -38,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       );
     }
   });
-  User.prototype.comparePassword = function (passw, cb) {
+  Usr.prototype.comparePassword = function (passw, cb) {
     bcrypt.compare(passw, this.password, function (err, isMatch) {
       if (err) {
         return cb(err);
@@ -46,9 +45,9 @@ module.exports = (sequelize, DataTypes) => {
       cb(null, isMatch);
     });
   };
-  User.associate = function (models) {
+  Usr.associate = function (models) {
     // associations can be defined here
   };
 
-  return User;
+  return Usr;
 };

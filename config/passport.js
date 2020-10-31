@@ -4,6 +4,8 @@ const JwtStrategy = require("passport-jwt").Strategy,
 // load up the user model
 const User = require("../models").User;
 
+console.log(`\n\n${User}\n\n`);
+
 module.exports = function (passport) {
   const options = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("JWT"),
