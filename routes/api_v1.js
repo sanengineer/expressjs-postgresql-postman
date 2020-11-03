@@ -2,7 +2,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const router = express.Router();
-require("../config/passport")(passport); // ini apa kok ada require ga make const bla bla bla?
+require("../config/passport")(passport);
 const Product = require("../models").Product;
 const User = require("../models").User;
 

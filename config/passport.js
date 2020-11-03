@@ -7,6 +7,8 @@ const User = db.Product;
 
 console.log(User);
 
+console.log(`\n\n${User}\n\n`);
+
 module.exports = function (passport) {
   const options = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("JWT"),
