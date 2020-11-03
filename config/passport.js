@@ -2,7 +2,10 @@ const JwtStrategy = require("passport-jwt").Strategy,
   ExtractJwt = require("passport-jwt").ExtractJwt;
 
 // load up the user model
-const User = require("../models").User;
+const db = require("../models");
+const User = db.Product;
+
+console.log(User);
 
 module.exports = function (passport) {
   const options = {
@@ -13,8 +16,8 @@ module.exports = function (passport) {
     "jwt",
     new JwtStrategy(options, function (jwt_payload, done) {
       User.findByPk(jwt_payload.id)
-        .then((user) => {
-          return done(null, user);
+        .then((usernameReqBody) => {
+          return done(null, usernameReqBody);
         })
         .catch((error) => {
           return done(error, false);

@@ -63,7 +63,9 @@ router.get(
   function (req, res) {
     var token = getToken(req.headers);
 
-    console.log(req.headers);
+    console.log(`\nThis is var token: \n${token}\n\n`);
+
+    console.log(`\nThis is req headers:\n${req.headers}\n\n`);
 
     if (token) {
       Product.findAll()
