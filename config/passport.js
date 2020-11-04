@@ -22,7 +22,12 @@ module.exports = function (passport) {
           return done(null, usernameReqBody);
         })
         .catch((error) => {
-          return done(error, false);
+          return done(
+            {
+              message: error.message || "error gans",
+            },
+            false
+          );
         });
     })
   );
